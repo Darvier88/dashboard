@@ -1,4 +1,4 @@
-# Dashboard Climático
+# Centro de Información Climática
 
 Este proyecto es un dashboard interactivo diseñado para visualizar información climática en tiempo real de distintas ubicaciones geográficas.
 
