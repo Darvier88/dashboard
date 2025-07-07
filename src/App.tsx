@@ -3,6 +3,10 @@ import { Grid } from '@mui/material';
 import IndicatorUI from './components/IndicatorUI';
 import DataFetcher from './functions/DataFetcher';
 
+import HeaderUI from './components/HeaderUI';
+import AlertUI from './components/AlertUI';
+import SelectorUI from './components/SelectorUI'; // Importa SelectorUI
+
 
 function App() {
    const dataFetcherOutput = DataFetcher();
@@ -11,13 +15,19 @@ function App() {
       <Grid container spacing={5} justifyContent="center" alignItems="center">
 
          {/* Encabezado */}
-         <Grid size={{ xs: 12, md: 12 }}>Elemento: Encabezado</Grid>
+         <Grid size={{ xs: 12, md: 12 }}>
+            <HeaderUI/>
+         </Grid>
 
          {/* Alertas */}
-         <Grid>Elemento: Alertas</Grid>
+         <Grid container justifyContent="right" alignItems="center">Elemento: Alertas
+            <AlertUI description="No se preveen lluvias"/>
+         </Grid>
 
          {/* Selector */}
-         <Grid size={{ xs: 12, md: 3  }}>Elemento: Selector</Grid>
+         <Grid size={{ xs: 12, md: 3  }}>
+            <SelectorUI /> {/* Usa SelectorUI aquí */}
+         </Grid>
 
          {/* Indicadores */}
              <Grid container size={{ xs: 12, md: 9 }} >
