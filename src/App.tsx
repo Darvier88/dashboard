@@ -32,24 +32,7 @@ function App() {
          {/* Indicadores */}
              <Grid container size={{ xs: 12, md: 9 }} >
 
-                 <Grid size={{ xs: 12, md: 3 }}>
-                     <IndicatorUI title='Temperatura (2m)' description='XX°C' />
-                 </Grid>
-
-                 <Grid size={{ xs: 12, md: 3 }}>
-                     <IndicatorUI title='Temperatura aparente' description='YY°C' />
-                 </Grid>
-
-                 <Grid size={{ xs: 12, md: 3 }}>
-                     <IndicatorUI title='Velocidad del viento' description='ZZkm/h' />
-                 </Grid>
-
-                 <Grid size={{ xs: 12, md: 3 }}>
-                     <IndicatorUI title='Humedad relativa' description='NN%' />
-                 </Grid>
-
-             </Grid>
-                  {/* Renderizado condicional de los datos obtenidos */}
+                 {/* Renderizado condicional de los datos obtenidos */}
 
                  {dataFetcherOutput.loading && <p>Cargando datos...</p>}
                  {dataFetcherOutput.error && <p>Error: {dataFetcherOutput.error}</p>}
@@ -84,6 +67,9 @@ function App() {
 
                  </>
                  )}
+
+             </Grid>
+                  
 
          {/* Gráfico */}
          <Grid sx={{ display: { xs: "none", md: "block"} }}>Elemento: Gráfico</Grid>
