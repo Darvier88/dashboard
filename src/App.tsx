@@ -6,7 +6,6 @@ import DataFetcher from './functions/DataFetcher';
 import HeaderUI from './components/HeaderUI';
 import AlertUI from './components/AlertUI';
 import SelectorUI from './components/SelectorUI'; // Importa SelectorUI
-
 import TableUI from './components/TableUI';
 import ChartUI from './components/ChartUI';
 
@@ -34,7 +33,9 @@ function App() {
          {/* Indicadores */}
              <Grid container size={{ xs: 12, md: 9 }} >
 
+
                  {/* Renderizado condicional de los datos obtenidos */}
+
 
                  {dataFetcherOutput.loading && <p>Cargando datos...</p>}
                  {dataFetcherOutput.error && <p>Error: {dataFetcherOutput.error}</p>}
@@ -69,6 +70,7 @@ function App() {
 
                  </>
                  )}
+                 </Grid>
 
              </Grid>
                   
@@ -82,10 +84,10 @@ function App() {
          {/* Tabla */}
          <Grid size={{ xs: 6, md: 6 }} sx={{ display: { xs: "none", md: "block" } }}>
               <TableUI />
-           </Grid>
+        </Grid>
 
          {/* Información adicional */}
-         <Grid>Elemento: Información adicional</Grid>
+         <Grid></Grid>
 
       </Grid>
    );

@@ -1,6 +1,9 @@
 import Box from '@mui/material/Box';
 import { DataGrid, type GridColDef } from '@mui/x-data-grid';
 
+import DataFetcher from '../functions/DataFetcher';
+
+
 function combineArrays(arrLabels: Array<string>, arrValues1: Array<number>, arrValues2: Array<number>) {
    return arrLabels.map((label, index) => ({
       id: index,
@@ -12,21 +15,9 @@ function combineArrays(arrLabels: Array<string>, arrValues1: Array<number>, arrV
 
 const columns: GridColDef[] = [
    { field: 'id', headerName: 'ID', width: 90 },
-   {
-      field: 'label',
-      headerName: 'Label',
-      width: 150,
-   },
-   {
-      field: 'value1',
-      headerName: 'Value 1',
-      width: 150,
-   },
-   {
-      field: 'value2',
-      headerName: 'Value 2',
-      width: 150,
-   },
+   { field: 'label', headerName: 'Hora', width: 150 },
+   { field: 'value1', headerName: 'Temperatura (°C)', width: 90 },
+   { field: 'value2', headerName: 'Velocidad Viento (km/h)', width: 90 },
    {
       field: 'resumen',
       headerName: 'Resumen',
@@ -38,11 +29,18 @@ const columns: GridColDef[] = [
    },
 ];
 
-const arrValues1 = [4000, 3000, 2000, 2780, 1890, 2390, 3490];
-const arrValues2 = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
-const arrLabels = ['A','B','C','D','E','F','G'];
-
 export default function TableUI() {
+   const { data, loading, error } = DataFetcher();
+
+   if (loading) return <Box sx={{ p: 2 } }>Cargando datos...</Box>;
+   if (error) return <Box sx={{ p: 2, color: 'red' }}>Error: {error}</Box>;
+   if (!data) return <Box sx={{ p: 2 }}>Sin datos.</Box>;
+
+   // Tomamos las primeras 7 horas para mostrar
+   const arrLabels = data.hourly.time.slice(0, 50);
+   const arrValues1 = data.hourly.temperature_2m.slice(0, 50);
+   const arrValues2 = data.hourly.wind_speed_10m.slice(0, 50);
+
 
    const rows = combineArrays(arrLabels, arrValues1, arrValues2);
 
