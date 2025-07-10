@@ -1,5 +1,6 @@
 import { LineChart } from '@mui/x-charts/LineChart';
 import Typography from '@mui/material/Typography';
+
 import DataFetcher from '../functions/DataFetcher';
 
 export default function ChartUI() {
@@ -21,6 +22,7 @@ export default function ChartUI() {
          <LineChart
             height={300}
             series={[
+
                { data: arrValues1, label: 'Temperatura (°C)' },
                { data: arrValues2, label: 'Viento (km/h)' },
             ]}

@@ -34,8 +34,8 @@ function App() {
              <Grid container size={{ xs: 12, md: 9 }} >
 
 
-             
-                  {/* Renderizado condicional de los datos obtenidos */}
+                 {/* Renderizado condicional de los datos obtenidos */}
+
 
                  {dataFetcherOutput.loading && <p>Cargando datos...</p>}
                  {dataFetcherOutput.error && <p>Error: {dataFetcherOutput.error}</p>}
@@ -72,10 +72,14 @@ function App() {
                  )}
                  </Grid>
 
+             </Grid>
+                  
+
          {/* Gráfico */}
-          <Grid size={{ xs: 6, md: 6 }} sx={{ display: { xs: "none", md: "block" } }}>
+         <Grid size={{ xs: 6, md: 6 }} sx={{ display: { xs: "none", md: "block" } }}>
               <ChartUI />
            </Grid>
+
 
          {/* Tabla */}
          <Grid size={{ xs: 6, md: 6 }} sx={{ display: { xs: "none", md: "block" } }}>

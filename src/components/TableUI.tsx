@@ -1,6 +1,8 @@
 import Box from '@mui/material/Box';
 import { DataGrid, type GridColDef } from '@mui/x-data-grid';
+
 import DataFetcher from '../functions/DataFetcher';
+
 
 function combineArrays(arrLabels: Array<string>, arrValues1: Array<number>, arrValues2: Array<number>) {
    return arrLabels.map((label, index) => ({
@@ -22,7 +24,7 @@ const columns: GridColDef[] = [
       description: 'No es posible ordenar u ocultar esta columna.',
       sortable: false,
       hideable: false,
-      width: 220,
+      width: 160,
       valueGetter: (_, row) => `${row.label || ''} ${row.value1 || ''} ${row.value2 || ''}`,
    },
 ];
@@ -38,6 +40,7 @@ export default function TableUI() {
    const arrLabels = data.hourly.time.slice(0, 50);
    const arrValues1 = data.hourly.temperature_2m.slice(0, 50);
    const arrValues2 = data.hourly.wind_speed_10m.slice(0, 50);
+
 
    const rows = combineArrays(arrLabels, arrValues1, arrValues2);
 
