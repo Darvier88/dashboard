@@ -16,15 +16,15 @@ function combineArrays(arrLabels: Array<string>, arrValues1: Array<number>, arrV
 const columns: GridColDef[] = [
    { field: 'id', headerName: 'ID', width: 90 },
    { field: 'label', headerName: 'Hora', width: 150 },
-   { field: 'value1', headerName: 'Temperatura (°C)', width: 90 },
-   { field: 'value2', headerName: 'Velocidad Viento (km/h)', width: 90 },
+   { field: 'value1', headerName: 'Temperatura (°C)', width: 125 },
+   { field: 'value2', headerName: 'Velocidad Viento (km/h)', width: 165 },
    {
       field: 'resumen',
       headerName: 'Resumen',
       description: 'No es posible ordenar u ocultar esta columna.',
       sortable: false,
       hideable: false,
-      width: 160,
+      width: 220,
       valueGetter: (_, row) => `${row.label || ''} ${row.value1 || ''} ${row.value2 || ''}`,
    },
 ];
