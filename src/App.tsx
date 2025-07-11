@@ -37,13 +37,13 @@ function App() {
    // Pasa lat/lon a DataFetcher
    const dataFetcherOutput = DataFetcher(selectedCity.lat, selectedCity.lon);
 
-  /* if (dataFetcherOutput.loading) {
+   if (dataFetcherOutput.loading) {
       return <div>Cargando datos del clima...</div>;
    }
 
    if (dataFetcherOutput.error) {
       return <div>Error: {dataFetcherOutput.error}</div>;
-   }*/
+   }
 
    return (
     <ThemeProvider theme={darkTheme}>
@@ -145,4 +145,4 @@ function App() {
    );
 }
 
-export default App;
+export default App;
