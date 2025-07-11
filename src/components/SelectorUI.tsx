@@ -55,4 +55,3 @@ export default function SelectorUI({ cities, selectedCity, setSelectedCity }: Se
     </>
   )
 }
-\

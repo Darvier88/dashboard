@@ -1,5 +1,22 @@
 import { useState, useEffect } from "react";
-import type { OpenMeteoResponse } from "../Types/DashboardTypes";
+
+export interface OpenMeteoResponse {
+  // Example fields, adjust according to actual API response
+  latitude: number;
+  longitude: number;
+  current: {
+    temperature_2m: number;
+    relative_humidity_2m: number;
+    apparent_temperature: number;
+    wind_speed_10m: number;
+  };
+  hourly: {
+    temperature_2m: number[];
+    wind_speed_10m: number[];
+    time: string[];
+  };
+  // Add other fields as needed;
+}
 
 export interface DataFetcherResult {
   data: OpenMeteoResponse | null;
@@ -12,7 +29,7 @@ const DataFetcher = (lat: number, lon: number): DataFetcherResult => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const url = https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,wind_speed_10m&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m&timezone=America%2FChicago;
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,wind_speed_10m&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m&timezone=America%2FChicago`;
 
   useEffect(() => {
     async function fetchData() {

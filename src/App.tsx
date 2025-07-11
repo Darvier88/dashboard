@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { Grid, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import './App.css'
-import HeaderUI from './Components/HeaderUI';
-import AlertUI from './Components/AlertUI';
-import SelectorUI from './Components/SelectorUI';
-import IndicatorUI from './Components/IndicatorUI';
+import HeaderUI from './components/HeaderUI';
+import AlertUI from './components/AlertUI';
+import SelectorUI from './components/SelectorUI';
+import IndicatorUI from './components/IndicatorUI';
 import DataFetcher from './functions/DataFetcher';
-import ChartUI from './Components/ChartUI';
-import TableUI from './Components/TableUI';
+import ChartUI from './components/ChartUI';
+import TableUI from './components/TableUI';
 
 const cities = [
   { value: "guayaquil", label: "Guayaquil", lat: -2.170998, lon: -79.922359 },
@@ -35,7 +35,7 @@ function App() {
    const [selectedCity, setSelectedCity] = useState(cities[0]);
 
    // Pasa lat/lon a DataFetcher
-   const dataFetcherOutput = DataFetcher(selectedCity.value);
+   const dataFetcherOutput = DataFetcher(selectedCity.lat, selectedCity.lon);
 
   /* if (dataFetcherOutput.loading) {
       return <div>Cargando datos del clima...</div>;
@@ -129,6 +129,7 @@ function App() {
               lon={selectedCity.lon}
             />
          </Grid>
+
 
          {/* Tabla */}
          <Grid>
