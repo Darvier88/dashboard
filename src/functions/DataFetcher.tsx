@@ -1,22 +1,5 @@
 import { useState, useEffect } from "react";
-
-export interface OpenMeteoResponse {
-  // Example fields, adjust according to actual API response
-  latitude: number;
-  longitude: number;
-  current: {
-    temperature_2m: number;
-    relative_humidity_2m: number;
-    apparent_temperature: number;
-    wind_speed_10m: number;
-  };
-  hourly: {
-    temperature_2m: number[];
-    wind_speed_10m: number[];
-    time: string[];
-  };
-  // Add other fields as needed;
-}
+import type { OpenMeteoResponse } from "../types/DashboardTypes";
 
 export interface DataFetcherResult {
   data: OpenMeteoResponse | null;
@@ -29,7 +12,7 @@ const DataFetcher = (lat: number, lon: number): DataFetcherResult => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m,wind_speed_10m&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m&timezone=America%2FChicago`;
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,wind_speed_10m&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m&timezone=America%2FChicago`
 
   useEffect(() => {
     async function fetchData() {
@@ -51,9 +34,9 @@ const DataFetcher = (lat: number, lon: number): DataFetcherResult => {
     }
 
     fetchData();
-  }, [lat, lon]); // <-- Dependencias
+  }, [lat, lon]); 
 
   return { data, loading, error };
 };
 
-export default DataFetcher;
+export default DataFetcher;

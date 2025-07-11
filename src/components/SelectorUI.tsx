@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
@@ -52,6 +53,6 @@ export default function SelectorUI({ cities, selectedCity, setSelectedCity }: Se
           Información del clima en <strong>{capitalizeFirstLetter(selectedCity.label)}</strong>
         </Typography>
       )}
-    </>
-  )
+    </>
+  )
 }

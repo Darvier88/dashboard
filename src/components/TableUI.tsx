@@ -3,6 +3,10 @@ import { DataGrid, type GridColDef } from '@mui/x-data-grid';
 
 import DataFetcher from '../functions/DataFetcher';
 
+interface TableUIProps {
+  lat: number;
+  lon: number;
+}
 
 function combineArrays(arrLabels: Array<string>, arrValues1: Array<number>, arrValues2: Array<number>) {
    return arrLabels.map((label, index) => ({
@@ -29,8 +33,8 @@ const columns: GridColDef[] = [
    },
 ];
 
-export default function TableUI() {
-   const { data, loading, error } = DataFetcher();
+export default function TableUI({lat,lon}: TableUIProps ) {
+   const { data, loading, error } = DataFetcher(lat, lon);
 
    if (loading) return <Box sx={{ p: 2 } }>Cargando datos...</Box>;
    if (error) return <Box sx={{ p: 2, color: 'red' }}>Error: {error}</Box>;

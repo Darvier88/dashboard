@@ -37,14 +37,6 @@ function App() {
    // Pasa lat/lon a DataFetcher
    const dataFetcherOutput = DataFetcher(selectedCity.lat, selectedCity.lon);
 
-   if (dataFetcherOutput.loading) {
-      return <div>Cargando datos del clima...</div>;
-   }
-
-   if (dataFetcherOutput.error) {
-      return <div>Error: {dataFetcherOutput.error}</div>;
-   }
-
    return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
@@ -84,7 +76,7 @@ function App() {
                   title='Temperatura (2m)'
                   description={
                      dataFetcherOutput.data
-                        ? `${dataFetcherOutput.data?.current.temperature_2m}°C`
+                        ? `${dataFetcherOutput.data.current.temperature_2m}°C`
                         : '--'
                   }
                />
@@ -94,7 +86,7 @@ function App() {
                   title='Temperatura aparente'
                   description={
                      dataFetcherOutput.data
-                        ? `${dataFetcherOutput.data?.current.apparent_temperature}°C`
+                        ? `${dataFetcherOutput.data.current.apparent_temperature}°C`
                         : '--'
                   }
                />
@@ -104,7 +96,7 @@ function App() {
                   title='Velocidad del viento'
                   description={
                      dataFetcherOutput.data
-                        ? `${dataFetcherOutput.data?.current.wind_speed_10m} km/h`
+                        ? `${dataFetcherOutput.data.current.wind_speed_10m} km/h`
                         : '--'
                   }
                />
@@ -114,7 +106,7 @@ function App() {
                   title='Humedad relativa'
                   description={
                      dataFetcherOutput.data
-                        ? `${dataFetcherOutput.data?.current.relative_humidity_2m}%`
+                        ? `${dataFetcherOutput.data.current.relative_humidity_2m}%`
                         : '--'
                   }
                />
@@ -129,7 +121,6 @@ function App() {
               lon={selectedCity.lon}
             />
          </Grid>
-
 
          {/* Tabla */}
          <Grid>
