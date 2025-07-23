@@ -3,7 +3,9 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import type { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import { Typography } from '@mui/material';
+import { Box, Chip, Typography } from '@mui/material';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 interface City {
   value: string;
@@ -30,28 +32,47 @@ export default function SelectorUI({ cities, selectedCity, setSelectedCity }: Se
   };
 
   return (
-    <>
-      <FormControl fullWidth>
-        <InputLabel id="city-select-label">Ciudad</InputLabel>
+    <Box>
+      <FormControl fullWidth sx={{ 
+        '& .MuiOutlinedInput-root': { 
+          borderRadius: 2,
+          backgroundColor: '#fff'
+        } 
+      }}>
+        <InputLabel id="city-select-label">Ubicación Actual</InputLabel>
         <Select
           labelId="city-select-label"
           id="city-simple-select"
           value={selectedCity.value}
-          label="Ciudad"
+          label="Ubicación Actual"
           onChange={handleChange}
         >
           <MenuItem disabled value=""><em>Seleccione una ciudad</em></MenuItem>
           {cities.map(city => (
-            <MenuItem key={city.value} value={city.value}>{city.label}</MenuItem>
+            <MenuItem key={city.value} value={city.value}>
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <LocationOnIcon fontSize="small" color="error" sx={{ mr: 1 }} />
+                {capitalizeFirstLetter(city.label)}, Ecuador
+              </Box>
+            </MenuItem>
           ))}
         </Select>
       </FormControl>
       
       {selectedCity && (
-        <Typography sx={{ marginTop: 2 }}>
-          Información del clima en <strong>{capitalizeFirstLetter(selectedCity.label)}</strong>
-        </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
+          <Typography variant="body2" color="text.secondary" sx={{ mr: 1 }}>
+            Coordenadas de {capitalizeFirstLetter(selectedCity.label)}: {selectedCity.lat.toFixed(4)}, {selectedCity.lon.toFixed(4)}
+          </Typography>
+          <Chip 
+            icon={<AccessTimeIcon fontSize="small" />}
+            label="ECT(UTC-5)" 
+            size="small" 
+            color="info" 
+            variant="outlined"
+          />
+        </Box>
       )}
-    </>
-  )
+    </Box>
+  );
 }
